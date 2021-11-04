@@ -1,0 +1,15 @@
+title SPA: user creates a new note
+
+note over Browser:
+browser executes the code to create a new note, 
+adds it to the notes list, rerenders the note list on the page 
+and sends the new note to the server
+end note
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note over Browser, Server:
+payload: {content: "ok", date: "2021-11-03T22:50:18.107Z"}
+end note
+
+
+Server --> Browser: {"message":"note created"}

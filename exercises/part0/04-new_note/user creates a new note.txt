@@ -1,0 +1,25 @@
+title user creates a new note
+
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over Browser, Server:
+Form Data: note: test123
+end note
+note over Server:
+server receive the post and executes the code to create a new note 
+and add it to the json data of notes
+end note
+Server-->Browser: text/html
+Browser -> Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server --> Browser: HTML-code
+Browser -> Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server --> Browser: main.css
+Browser -> Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server --> Browser: main.js
+note over Browser: browser executes main.js which request JSON data from server
+end note
+Browser -> Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server --> Browser: JSON data:  [{"content":"o","date":"2021-11-03T12:13:11.065Z"},....]
+note over Browser:
+browser executes the event handler that renders notes to display
+end note
+
