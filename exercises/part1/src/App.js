@@ -16,22 +16,27 @@ const App = () => {
     <h1>{props.course}</h1>
     )
   }
+  
+const Part = (props) => {
+  return (
+    <p>
+      {props.part} {props.exercise}
+    </p>
+  )
+}
 
-  const Content = (props) => {
-    const parts_exercises = props.exercises
-   
-    return (
-      <div>
-        {
-        Object.keys(parts_exercises).map((key, index) => ( 
-          <p key={index}>{key} {parts_exercises[key]}</p> 
-        ))
-      }
-                     
-      </div>
-    )
-
-  }
+const Content = (props) => {
+  const parts_exercises = props.exercises
+  const keys = Object.keys(parts_exercises)
+  
+  return (
+    <div>
+         <Part part={keys[0]} exercise={parts_exercises[keys[0]]}/>
+         <Part part={keys[1]} exercise={parts_exercises[keys[1]]}/>
+         <Part part={keys[2]} exercise={parts_exercises[keys[2]]}/>
+    </div>
+  )
+}
 
   
   const Total = (props) => {
