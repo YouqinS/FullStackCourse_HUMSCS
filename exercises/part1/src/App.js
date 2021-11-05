@@ -2,21 +2,20 @@ import React from 'react'
 
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = {
-    name: 'Fundamentals of React',
-    exercises: 10
-  }
-  const part2 = {
-    name: 'Using props to pass data',
-    exercises: 7
-  }
-  const part3 = {
-    name: 'State of a component',
-    exercises: 14
-  }
-
-  const contents = [part1, part2, part3]
-  const total_exercises = part1.exercises + part2.exercises + part3.exercises
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
 
   const Header = (props) => {
     return (
@@ -33,7 +32,7 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-  const parts_exercises = props.parts_exercises
+  const parts_exercises = props.parts
 
   return (
   <div>
@@ -47,16 +46,18 @@ const Content = (props) => {
 
 
   const Total = (props) => {
+    const total_exercises = props.parts.reduce(function (total, currentValue){
+      return total + currentValue.exercises;}, 0)
     return (
-      <p>Number of exercises {props.total}</p>
+      <p>Number of exercises {total_exercises}</p>
     )
   }
 
   return (
     <div>
       <Header course ={course}/>
-      <Content parts_exercises={contents}/>
-      <Total total={total_exercises}/>
+      <Content parts={parts}/>
+      <Total parts={parts}/>
     </div>
   )
 }
