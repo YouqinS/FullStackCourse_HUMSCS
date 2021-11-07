@@ -13,9 +13,16 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
 
+  const selectAndSetNextAnecdote = () => {
+    let indx = Math.floor(Math.random()* anecdotes.length)
+    setSelected(indx)
+  }
+
   return (
       <div>
         {anecdotes[selected]}
+        <br/>
+        <button onClick={selectAndSetNextAnecdote}>next anecdote</button>
       </div>
   )
 }
