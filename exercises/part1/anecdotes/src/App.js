@@ -33,10 +33,9 @@ const App = () => {
     const getAnecdoteWithMostVotes = () => {
         const copy = { ...votes }
         let mostVoted = anecdotes[selected]
-        const keys = Object.keys(copy);
-        for (let i = 0; i < keys.length; i++) {
-            if (copy[keys[i]] > copy[mostVoted]) {
-                mostVoted = keys[i]
+        for (const [key, value] of Object.entries(copy)) {
+            if (value > copy[mostVoted]) {
+                mostVoted = key
             }
         }
         return mostVoted
