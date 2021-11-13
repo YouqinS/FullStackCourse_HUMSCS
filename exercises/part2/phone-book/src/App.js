@@ -24,7 +24,7 @@ const App = () => {
             .then(response => {
                 setContacts(response.data)
             })
-    })
+    }, [])
 
     return (
         <div>
