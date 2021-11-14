@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import Search from "./components/Search";
 import OneCountry from "./components/OneCountry";
+import CountryShow from "./components/CountryShow";
 
 function App() {
     const [countries, setCountries] = useState([])
     const [newSearchTerm, setNewSearchTerm] = useState('')
-    const [isSearching, setIsSearching] = useState(false)
 
 
     useEffect(() => {
@@ -18,7 +18,6 @@ function App() {
 
 
     const handleSearchTermChange = (event) => {
-        setIsSearching(true)
         setNewSearchTerm(event.target.value)
     }
 
@@ -29,7 +28,7 @@ function App() {
             } else if (countries.length === 1) {
                 return <OneCountry country={countries[0]}/>
             } else {
-                return countries.map(c => <p>{c.name.common}</p>)
+                return countries.map(c => <CountryShow country={c}/>)
             }
         }
     }
