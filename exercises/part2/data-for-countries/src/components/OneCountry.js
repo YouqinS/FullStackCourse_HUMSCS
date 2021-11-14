@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import Weather from "./Weather";
 
 const OneCountry = ({country}) => {
     const languages = country.languages
@@ -11,9 +12,10 @@ const OneCountry = ({country}) => {
             <p>population: {country.population}</p>
             <h3>languages</h3>
                 <ul>
-                    {Object.values(languages).map(language => <li>{language}</li>)}
+                    {Object.values(languages).map(language => <li key={language}>{language}</li>)}
                 </ul>
             <img src={flag} alt="flag"/>
+            <div><Weather country={country}/></div>
         </div>
     )
 }

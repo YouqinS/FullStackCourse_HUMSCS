@@ -28,7 +28,7 @@ function App() {
             } else if (countries.length === 1) {
                 return <OneCountry country={countries[0]}/>
             } else {
-                return countries.map(c => <CountryShow country={c}/>)
+                return countries.map(c => <CountryShow country={c} key={c.ccn3}/>)
             }
         }
     }
