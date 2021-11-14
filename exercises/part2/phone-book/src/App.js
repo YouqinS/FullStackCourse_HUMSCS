@@ -39,7 +39,7 @@ const App = () => {
             <h2>Numbers</h2>
             <div>
                 {contactsToShow.map(person =>
-                    <ContactInfo key={person.name} contact={person}/>
+                    <ContactInfo key={person.name} contact={person} allcontacts={contacts} setContacts={setContacts}/>
                 )}
             </div>
         </div>

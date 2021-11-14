@@ -13,7 +13,7 @@ const ContactForm = ({persons, setPersons}) => {
         setNewNumber(event.target.value)
     }
 
-    const addName = (event) => {
+    const addContact = (event) => {
         event.preventDefault()
 
         const compareValue = () => {
@@ -22,7 +22,7 @@ const ContactForm = ({persons, setPersons}) => {
 
         if (persons.some(compareValue())) {
             window.alert(`${newName} is already added to phonebook`);
-        } else {
+        } else if ((newName && newName.trim()) && (newNumber && newNumber.trim())) {
             const personObj = {
                 name: newName,
                 number: newNumber
@@ -39,7 +39,7 @@ const ContactForm = ({persons, setPersons}) => {
 
     return (
         <div>
-            <form onSubmit={addName}>
+            <form onSubmit={addContact}>
                 <div>name: <input value={newName} onChange={handleNameChange}/></div>
                 <div>number: <input value={newNumber} onChange={handleNumberChange}/></div>
                 <div>
