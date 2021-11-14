@@ -16,24 +16,43 @@ const ContactForm = ({persons, setPersons}) => {
     const addContact = (event) => {
         event.preventDefault()
 
-        const compareValue = () => {
-            return p => p.name === newName && p.number === newNumber;
+        const alreadyExist = () => {
+            return contact => contact.name === newName && contact.number === newNumber;
         }
 
-        if (persons.some(compareValue())) {
+        const samePersonNewNumber = () => {
+            return contact => contact.name === newName && contact.number !== newNumber;
+        }
+
+        if (persons.some(alreadyExist())) {
             window.alert(`${newName} is already added to phonebook`);
         } else if ((newName && newName.trim()) && (newNumber && newNumber.trim())) {
-            const personObj = {
-                name: newName,
-                number: newNumber
-            }
-            Contacts.create(personObj).then(
-                response => {
-                    setPersons(persons.concat(response))
-                    setNewName('')
-                    setNewNumber('')
+            if (persons.some(samePersonNewNumber())) {
+               if (window.confirm(`${newName} is already added to phonebook, replace the old number?`)) {
+                   const contactToBeUpdated = persons.find(p => p.name === newName)
+                   const updatedContact = {...contactToBeUpdated, number: newNumber}
+
+                   Contacts.update(contactToBeUpdated.id, updatedContact).then(
+                       response => {
+                           setPersons(persons.map(p => p.name === newName ? response : p))
+                           setNewName('')
+                           setNewNumber('')
+                       }
+                   )
+               }
+            } else {
+                const personObj = {
+                    name: newName,
+                    number: newNumber
                 }
-            )
+                Contacts.create(personObj).then(
+                    response => {
+                        setPersons(persons.concat(response))
+                        setNewName('')
+                        setNewNumber('')
+                    }
+                )
+            }
         }
     }
 
