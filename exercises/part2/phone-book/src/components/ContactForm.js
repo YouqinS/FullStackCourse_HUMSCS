@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Contacts from "../services/Contacts";
 
-const ContactForm = ({persons, setPersons}) => {
+const ContactForm = ({persons, setPersons, setNotification}) => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
 
@@ -37,6 +37,10 @@ const ContactForm = ({persons, setPersons}) => {
                            setPersons(persons.map(p => p.name === newName ? response : p))
                            setNewName('')
                            setNewNumber('')
+                           setNotification(`contact ${newName} is updated with new number successfully`)
+                           setTimeout(() => {
+                               setNotification(null)
+                           }, 3000)
                        }
                    )
                }
@@ -50,6 +54,10 @@ const ContactForm = ({persons, setPersons}) => {
                         setPersons(persons.concat(response))
                         setNewName('')
                         setNewNumber('')
+                        setNotification(`contact ${newName} is added successfully`)
+                        setTimeout(() => {
+                            setNotification(null)
+                        }, 3000)
                     }
                 )
             }
