@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from 'axios'
+import Contacts from "../services/Contacts";
 
 const ContactForm = ({persons, setPersons}) => {
     const [newName, setNewName] = useState('')
@@ -27,10 +27,9 @@ const ContactForm = ({persons, setPersons}) => {
                 name: newName,
                 number: newNumber
             }
-            axios.post("http://localhost:3001/persons", personObj).then(
+            Contacts.create(personObj).then(
                 response => {
-                    let addedNewPerson = persons.concat(personObj);
-                    setPersons(addedNewPerson)
+                    setPersons(persons.concat(response))
                     setNewName('')
                     setNewNumber('')
                 }

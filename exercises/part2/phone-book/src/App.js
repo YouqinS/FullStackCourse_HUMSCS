@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ContactInfo from "./components/ContactInfo";
 import FilterContact from "./components/FilterContact";
 import ContactForm from "./components/ContactForm";
-import axios from "axios";
+import Contacts from "./services/Contacts";
 
 const App = () => {
     const [contacts, setContacts] = useState([])
@@ -20,9 +20,9 @@ const App = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:3001/persons")
+        Contacts.getAll()
             .then(response => {
-                setContacts(response.data)
+                setContacts(response)
             })
     }, [])
 
