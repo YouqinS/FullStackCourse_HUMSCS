@@ -37,12 +37,25 @@ const ContactForm = ({persons, setPersons, setNotification}) => {
                            setPersons(persons.map(p => p.name === newName ? response : p))
                            setNewName('')
                            setNewNumber('')
-                           setNotification(`contact ${newName} is updated with new number successfully`)
+                           const notification = {
+                               "message": `contact ${newName} is updated with new number successfully`,
+                               "isError": false
+                           }
+                           setNotification(notification)
                            setTimeout(() => {
                                setNotification(null)
                            }, 3000)
+                       }).catch(error => {
+                       const notification = {
+                           "message":  `Information of '${contactToBeUpdated.name}' has been removed from server`,
+                           "isError": true
                        }
-                   )
+                       setNotification(notification)
+                       setTimeout(() => {
+                           setNotification(null)
+                       }, 3000)
+                       setPersons(persons.filter(n => n.name !== newName))
+                   })
                }
             } else {
                 const personObj = {
@@ -54,7 +67,11 @@ const ContactForm = ({persons, setPersons, setNotification}) => {
                         setPersons(persons.concat(response))
                         setNewName('')
                         setNewNumber('')
-                        setNotification(`contact ${newName} is added successfully`)
+                        const notification = {
+                            "message":  `contact ${newName} is added successfully`,
+                            "isError": false
+                        }
+                        setNotification(notification)
                         setTimeout(() => {
                             setNotification(null)
                         }, 3000)

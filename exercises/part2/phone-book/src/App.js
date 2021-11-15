@@ -10,7 +10,7 @@ const App = () => {
 
     const [newSearchTerm, setNewSearchTerm] = useState('')
     const [isSearching, setIsSearching] = useState(false)
-    const [notification, setNotification] = useState('')
+    const [notification, setNotification] = useState(null)
 
     const contactsToShow = isSearching
         ? contacts.filter(p => p.name.toLowerCase().includes(newSearchTerm.toLowerCase()))
@@ -31,7 +31,7 @@ const App = () => {
     return (
         <div>
             <h2>Phonebook</h2>
-            <Notification message={notification}/>
+            <Notification notification={notification}/>
             <FilterContact newSearchTerm={newSearchTerm} handleSearchTermChange={handleSearchTermChange}/>
 
             <h3>add a new</h3>
