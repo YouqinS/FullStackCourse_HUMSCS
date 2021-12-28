@@ -4,7 +4,6 @@ const User = require('../models/user')
 const middleware = require("../utils/middleware");
 
 
-
 blogsRouter.get('/', async (request, response) => {
     const blogs = await Blog
         .find({}).populate('user', { username: 1, name: 1 })
@@ -47,7 +46,7 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) =
 
     const blog = await Blog.findById(request.params.id)
 
-    if (blog.user.toString() !==user._id.toString()) {
+    if (blog.user.toString() !== user._id.toString()) {
       return response.status(401).end()
     }
 
@@ -55,5 +54,22 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response) =
     response.status(204).end()
 })
 
+
+blogsRouter.put('/:id', async (request, response) => {
+    if (!request.token || !request.decodedToken) {
+        return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    const body = request.body
+    const blog = {
+        likes: body.likes,
+    }
+
+    const updatedBlog = await Blog.findByIdAndUpdate(
+        request.params.id,
+        blog,
+        { new: true }
+    )
+    response.json(updatedBlog)
+})
 
 module.exports = blogsRouter
