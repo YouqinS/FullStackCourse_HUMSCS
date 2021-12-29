@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from "./services/login";
+import Notification from "./components/Notification";
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
@@ -11,6 +12,8 @@ const App = () => {
   const [author, setNewAuthor] = useState('author')
   const [url, setNewUrl] = useState('url')
   const [user, setUser] = useState(null)
+  const [notification, setNotification] = useState(null)
+
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
@@ -43,6 +46,14 @@ const App = () => {
       setPassword('')
     } catch (error) {
       console.log(error)
+      const notification = {
+        message: `wrong username or password`,
+        isError: true
+      }
+      setNotification(notification)
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
     }
   }
 
@@ -126,8 +137,24 @@ const App = () => {
           setNewTitle("")
           setNewAuthor("")
           setNewUrl("")
+          const notification = {
+            message: `added a new blog: ${title} by ${author}`,
+            isError: false
+          }
+          setNotification(notification)
+          setTimeout(() => {
+            setNotification(null)
+          }, 5000)
         }).catch(error => {
       console.log(error)
+      const notification = {
+        message: `failed to add new blog`,
+        isError: true
+      }
+      setNotification(notification)
+      setTimeout(() => {
+        setNotification(null)
+      }, 5000)
     })
   }
 
@@ -136,6 +163,7 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
+      <Notification notification={notification}/>
       {user === null ?
           loginForm() :
           blogsDiv()
