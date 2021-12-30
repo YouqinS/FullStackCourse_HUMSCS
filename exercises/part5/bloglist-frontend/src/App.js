@@ -61,7 +61,7 @@ const App = () => {
     const updateLikes = (id) => {
         const blogToBeUpdated = blogs.find(b => b.id === id)
         console.log("blogToBeUpdated=", blogToBeUpdated)
-        const changedBlog = {...blogToBeUpdated, likes: (blogToBeUpdated.likes) + 1 }
+        const changedBlog = {...blogToBeUpdated, likes: (blogToBeUpdated.likes) + 1}
         blogService.update(id, changedBlog).then(
             updatedBlog => {
                 setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog))
@@ -70,7 +70,7 @@ const App = () => {
             console.log('failed to update likes ')
             console.log(error)
             setNotification(
-                `failed to update likes of Note '${blogToBeUpdated.title}`
+                `failed to update likes of blog '${blogToBeUpdated.title}`
             )
             setTimeout(() => {
                 setNotification(null)
@@ -78,9 +78,28 @@ const App = () => {
             setBlogs(blogs.filter(b => b.id !== id))
         })
     }
+    const removeBlog = (id) => {
+        const blogToBeRemoved = blogs.find(b => b.id === id)
+        console.log("blogToBeRemoved=", blogToBeRemoved)
+        if (window.confirm(`Sure to remove blog ${blogToBeRemoved.title} by ${blogToBeRemoved.author}?`)) {
+            blogService.remove(id).then(
+                () => {
+                    setBlogs(blogs.filter(b => b.id !== id))
+                }
+            ).catch(error => {
+                console.log(error)
+                setNotification(
+                    `failed to remove blog '${blogToBeRemoved.title}`
+                )
+                setTimeout(() => {
+                    setNotification(null)
+                }, 5000)
+            })
+        }
+    }
 
     const sortedBlogs = () => {
-       return blogs.sort((a,b) => (a.likes > b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0)).reverse()
+        return blogs.sort((a, b) => (a.likes > b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0)).reverse()
     }
 
     return (
@@ -97,7 +116,8 @@ const App = () => {
                     <NewBlogForm createNewBlog={createNewBlog}/>
                 </Togglable>
             }
-            {sortedBlogs().map(blog => <Blog key={blog.id} blog={blog} updateLikes={() => updateLikes(blog.id)}/>)}
+            {sortedBlogs().map(blog => <Blog key={blog.id} blog={blog} updateLikes={() => updateLikes(blog.id)}
+                                             removeBlog={() => removeBlog(blog.id)}/>)}
         </div>
     )
 }
