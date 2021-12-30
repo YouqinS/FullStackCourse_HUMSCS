@@ -1,4 +1,4 @@
-const Logout = ({ user, setUser }) => {
+const Logout = ({user, setUser}) => {
 
     const handleLogout = async () => {
         console.log('logging out')
@@ -6,11 +6,15 @@ const Logout = ({ user, setUser }) => {
         setUser(null)
     }
 
-    return (
-        <p>{user.username} logged in
-            <button onClick={handleLogout}>logout</button>
-        </p>
-    )
+    return user ?
+        (
+            <div>
+                {user.username} logged in
+                <button onClick={handleLogout}>logout</button>
+            </div>
+        )
+        :
+        ""
 }
 
 export default Logout

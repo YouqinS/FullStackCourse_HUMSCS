@@ -1,54 +1,29 @@
 import blogService from "../services/blogs";
 import {useState} from "react";
 
-const NewBlogForm = ({ blogs, setBlogs, setNotification }) => {
+const NewBlogForm = ({ createNewBlog }) => {
 
     const [title, setNewTitle] = useState('title')
     const [author, setNewAuthor] = useState('author')
     const [url, setNewUrl] = useState('url')
 
-    const createNewBlog = (event) => {
+    const addBlog = (event) => {
         event.preventDefault()
-
-        const blogObject = {
+        createNewBlog({
             title: title,
             author: author,
             url: url
-        }
-
-        //add new blog to db
-        blogService.create(blogObject)
-            .then(newBlog => {
-                setBlogs(blogs.concat(newBlog))
-                setNewTitle("")
-                setNewAuthor("")
-                setNewUrl("")
-                const notification = {
-                    message: `added a new blog: ${title} by ${author}`,
-                    isError: false
-                }
-                setNotification(notification)
-                setTimeout(() => {
-                    setNotification(null)
-                }, 5000)
-            }).catch(error => {
-            console.log(error)
-            const notification = {
-                message: `failed to add new blog`,
-                isError: true
-            }
-            setNotification(notification)
-            setTimeout(() => {
-                setNotification(null)
-            }, 5000)
         })
-    }
 
+        setNewTitle("")
+        setNewAuthor("")
+        setNewUrl("")
+    }
 
     return (
             <div>
                 <h2>create new</h2>
-                <form onSubmit={createNewBlog}>
+                <form onSubmit={addBlog}>
                     <label>
                         title:
                         <input value={title} onChange={({target}) => setNewTitle(target.value)}/>
