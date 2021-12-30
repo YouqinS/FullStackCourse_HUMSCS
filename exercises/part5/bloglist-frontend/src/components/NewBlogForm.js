@@ -2,7 +2,6 @@ import blogService from "../services/blogs";
 import {useState} from "react";
 
 const NewBlogForm = ({ createNewBlog }) => {
-
     const [title, setNewTitle] = useState('title')
     const [author, setNewAuthor] = useState('author')
     const [url, setNewUrl] = useState('url')
