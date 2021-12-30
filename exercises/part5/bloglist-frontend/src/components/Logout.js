@@ -1,20 +1,22 @@
-const Logout = ({user, setUser}) => {
+import React from 'react'
 
-    const handleLogout = async () => {
-        console.log('logging out')
-        window.localStorage.clear()
-        setUser(null)
-    }
+const Logout = ({ user, setUser }) => {
 
-    return user ?
-        (
-            <div>
-                {user.username} logged in
-                <button onClick={handleLogout}>logout</button>
-            </div>
-        )
-        :
-        ""
+  const handleLogout = async () => {
+    console.log('logging out')
+    window.localStorage.clear()
+    setUser(null)
+  }
+
+  return user ?
+    (
+      <div>
+        {user.username} logged in
+        <button onClick={handleLogout}>logout</button>
+      </div>
+    )
+    :
+    ''
 }
 
 export default Logout
