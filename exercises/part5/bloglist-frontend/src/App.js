@@ -58,6 +58,26 @@ const App = () => {
             }, 5000)
         })
     }
+    const updateLikes = (id) => {
+        const blogToBeUpdated = blogs.find(b => b.id === id)
+        console.log("blogToBeUpdated=", blogToBeUpdated)
+        const changedBlog = {...blogToBeUpdated, likes: (blogToBeUpdated.likes) + 1 }
+        blogService.update(id, changedBlog).then(
+            updatedBlog => {
+                setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog))
+            }
+        ).catch(error => {
+            console.log('failed to update likes ')
+            console.log(error)
+            setNotification(
+                `failed to update likes of Note '${blogToBeUpdated.title}`
+            )
+            setTimeout(() => {
+                setNotification(null)
+            }, 5000)
+            setBlogs(blogs.filter(b => b.id !== id))
+        })
+    }
 
     return (
         <div>
@@ -73,7 +93,7 @@ const App = () => {
                     <NewBlogForm createNewBlog={createNewBlog}/>
                 </Togglable>
             }
-            {blogs.map(blog => <Blog key={blog.id} blog={blog}/>)}
+            {blogs.map(blog => <Blog key={blog.id} blog={blog} updateLikes={() => updateLikes(blog.id)}/>)}
         </div>
     )
 }

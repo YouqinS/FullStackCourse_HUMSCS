@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const Blog = ({blog}) => {
+const Blog = ({blog, updateLikes}) => {
   const [visible, setVisible] = useState(false)
   const label = visible ? "hide" : "view"
 
@@ -22,7 +22,7 @@ const Blog = ({blog}) => {
                   <p>{blog.title}
                   <button onClick={showHide}> {label} </button></p>
                   <p>{blog.url}</p>
-                  <p>{blog.likes} <button>like</button></p>
+                  <p>{blog.likes} <button onClick={updateLikes}>like</button></p>
                   <p>{blog.author}</p>
                 </div>
                 :
