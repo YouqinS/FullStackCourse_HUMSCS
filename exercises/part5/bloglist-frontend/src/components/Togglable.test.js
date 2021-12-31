@@ -4,44 +4,44 @@ import { render, fireEvent } from '@testing-library/react'
 import Togglable from './Togglable'
 
 describe('<Togglable />', () => {
-    let component
+  let component
 
-    beforeEach(() => {
-        component = render(
-            <Togglable buttonLabel="show...">
-                <div className="testDiv" />
-            </Togglable>
-        )
-    })
+  beforeEach(() => {
+    component = render(
+      <Togglable buttonLabel="show...">
+        <div className="testDiv" />
+      </Togglable>
+    )
+  })
 
-    test('renders its children', () => {
-        expect(
-            component.container.querySelector('.testDiv')
-        ).not.toBe(null)
-    })
+  test('renders its children', () => {
+    expect(
+      component.container.querySelector('.testDiv')
+    ).not.toBe(null)
+  })
 
-    test('at start the children are not displayed', () => {
-        const div = component.container.querySelector('.togglableContent')
+  test('at start the children are not displayed', () => {
+    const div = component.container.querySelector('.togglableContent')
 
-        expect(div).toHaveStyle('display: none')
-    })
+    expect(div).toHaveStyle('display: none')
+  })
 
-    test('after clicking the button, children are displayed', () => {
-        const button = component.getByText('show...')
-        fireEvent.click(button)
+  test('after clicking the button, children are displayed', () => {
+    const button = component.getByText('show...')
+    fireEvent.click(button)
 
-        const div = component.container.querySelector('.togglableContent')
-        expect(div).not.toHaveStyle('display: none')
-    })
+    const div = component.container.querySelector('.togglableContent')
+    expect(div).not.toHaveStyle('display: none')
+  })
 
-    test('toggled content can be closed', () => {
-        const showButton = component.getByText('show...')
-        fireEvent.click(showButton)
+  test('toggled content can be closed', () => {
+    const showButton = component.getByText('show...')
+    fireEvent.click(showButton)
 
-        const cancelButton = component.getByText('cancel')
-        fireEvent.click(cancelButton)
+    const cancelButton = component.getByText('cancel')
+    fireEvent.click(cancelButton)
 
-        const div = component.container.querySelector('.togglableContent')
-        expect(div).toHaveStyle('display: none')
-    })
+    const div = component.container.querySelector('.togglableContent')
+    expect(div).toHaveStyle('display: none')
+  })
 })

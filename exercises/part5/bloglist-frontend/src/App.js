@@ -108,9 +108,7 @@ const App = () => {
       <Logout user={user} setUser={setUser}/>
       <Notification notification={notification}/>
       {user === null ?
-        <Togglable buttonLabel="log in" ref={blogFormRef}>
-          <LoginForm setUser={setUser} setNotification={setNotification}/>
-        </Togglable>
+        <LoginForm setUser={setUser} setNotification={setNotification}/>
         :
         <Togglable buttonLabel="create new blog" ref={blogFormRef}>
           <NewBlogForm createNewBlog={createNewBlog}/>

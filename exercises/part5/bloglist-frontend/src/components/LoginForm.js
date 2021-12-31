@@ -18,7 +18,7 @@ const LoginForm = ({ setUser, setNotification }) => {
     try {
       const user = await loginService.login({ username, password })
       window.localStorage.setItem(
-        'loggedNoteappUser', JSON.stringify(user)
+        'loggedinAppUser', JSON.stringify(user)
       )
       console.log(window.localStorage)
       blogService.setToken(user.token)
@@ -45,6 +45,7 @@ const LoginForm = ({ setUser, setNotification }) => {
         <div>
                     username
           <input
+            id='username'
             type="text"
             value={username}
             name="Username"
@@ -54,13 +55,14 @@ const LoginForm = ({ setUser, setNotification }) => {
         <div>
                     password
           <input
+            id='password'
             type="password"
             value={password}
             name="Password"
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">login</button>
+        <button  id="login-button" type="submit">login</button>
       </form>
     </div>
   )
