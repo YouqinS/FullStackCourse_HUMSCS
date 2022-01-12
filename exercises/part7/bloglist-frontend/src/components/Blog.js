@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import {useDispatch} from "react-redux";
+import {deleteBlog, incrementLike} from "../reducers/blogReducer";
 
-const Blog = ({ blog, updateLikes, removeBlog }) => {
+const Blog = ({ blog }) => {
+  const dispatch = useDispatch()
+
   const [visible, setVisible] = useState(false)
   const label = visible ? 'hide' : 'view'
 
@@ -14,6 +18,15 @@ const Blog = ({ blog, updateLikes, removeBlog }) => {
     borderWidth: 1,
     marginBottom: 5
   }
+
+  const updateLikes = () => {
+    dispatch(incrementLike(blog))
+  }
+
+  const removeBlog = () => {
+    dispatch(deleteBlog(blog))
+  }
+
   return (
     <div>
       {

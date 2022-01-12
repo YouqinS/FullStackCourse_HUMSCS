@@ -34,47 +34,6 @@ const App = () => {
     return state.blogs
   })
 
-
-  /*const updateLikes = (id) => {
-    const blogToBeUpdated = blogs.find(b => b.id === id)
-    console.log('blogToBeUpdated=', blogToBeUpdated)
-    const changedBlog = { ...blogToBeUpdated, likes: (blogToBeUpdated.likes) + 1 }
-    blogService.update(id, changedBlog).then(
-      updatedBlog => {
-        setBlogs(blogs.map(blog => blog.id === id ? updatedBlog : blog))
-      }
-    ).catch(error => {
-      console.log('failed to update likes ')
-      console.log(error)
-      setNotification(
-        `failed to update likes of blog '${blogToBeUpdated.title}`
-      )
-      setTimeout(() => {
-        setNotification(null)
-      }, 5000)
-      setBlogs(blogs.filter(b => b.id !== id))
-    })
-  }*/
-  /*const removeBlog = (id) => {
-    const blogToBeRemoved = blogs.find(b => b.id === id)
-    console.log('blogToBeRemoved=', blogToBeRemoved)
-    if (window.confirm(`Sure to remove blog ${blogToBeRemoved.title} by ${blogToBeRemoved.author}?`)) {
-      blogService.remove(id).then(
-        () => {
-          setBlogs(blogs.filter(b => b.id !== id))
-        }
-      ).catch(error => {
-        console.log(error)
-        setNotification(
-          `failed to remove blog '${blogToBeRemoved.title}`
-        )
-        setTimeout(() => {
-          setNotification(null)
-        }, 5000)
-      })
-    }
-  }*/
-
   const sortedBlogs = () => {
     return blogs.sort((a, b) => (a.likes > b.likes) ? 1 : ((b.likes > a.likes) ? -1 : 0)).reverse()
   }

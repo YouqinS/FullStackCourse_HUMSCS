@@ -24,11 +24,6 @@ const NewBlogForm = () => {
         setNewAuthor('')
         setNewUrl('')
         dispatch(createBlog(newBlog))
-        const notification = {
-            message: `you added new blog '${title}'`,
-            isError: false
-        }
-        dispatch(setNotification(notification, 5));
     }
 
     return (
