@@ -1,61 +1,53 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {deleteBlog, incrementLike} from "../reducers/blogReducer";
-import {useRouteMatch} from "react-router-dom";
+import {Redirect, useHistory, useRouteMatch} from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 const Blog = () => {
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const history = useHistory()
 
-  const {
-    params: { id: userIdMatch },
-  } = useRouteMatch('/blogs/:id')
+    const {
+        params: {id: userIdMatch},
+    } = useRouteMatch('/blogs/:id')
 
-  const blog = useSelector((state) =>
-      state.blogs.find((b) => b.id === userIdMatch))
-  console.log("blog", blog)
+    const blog = useSelector((state) =>
+        state.blogs.find((b) => b.id === userIdMatch))
+    console.log("blog", blog)
 
-  const [visible, setVisible] = useState(false)
-  const label = visible ? 'hide' : 'view'
+    const blogStyle = {
+        paddingTop: 10,
+        paddingLeft: 2,
+        border: 'solid',
+        borderWidth: 1,
+        marginBottom: 5
+    }
 
-  const showHide = () => {
-    setVisible(!visible)
-  }
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: 'solid',
-    borderWidth: 1,
-    marginBottom: 5
-  }
+    const updateLikes = () => {
+        dispatch(incrementLike(blog))
+    }
 
-  const updateLikes = () => {
-    dispatch(incrementLike(blog))
-  }
+    const removeBlog = () => {
+        dispatch(deleteBlog(blog))
+        history.push('/')
+    }
 
-  const removeBlog = () => {
-    dispatch(deleteBlog(blog))
-  }
+    if (!blog) {
+        return <Redirect to="/"/>
+    }
 
-  return (
-    <div>
-      {
-        visible ?
-          <div style={blogStyle} className='blog' id='blog-details'>
-            <p>{blog.title}
-              <button onClick={showHide}> {label} </button></p>
-            <p>{blog.url}</p>
-            <p>{blog.likes} <button onClick={updateLikes}>like</button></p>
-            <p>{blog.author}</p>
-            <button onClick={removeBlog}>remove</button>
-          </div>
-          :
-          <div className='blog' id='blog'>
-            {blog.title} {blog.author}
-            <button onClick={showHide}> {label} </button>
-          </div>
-      }
-    </div>
-  )
+    return (
+        <div style={blogStyle} className='blog' id='blog-details'>
+            <h2>{blog.title}</h2>
+            <a href={blog.url}>{blog.url}</a>
+            <div><strong> {blog.likes}</strong>
+                <Button onClick={updateLikes}>like</Button>
+            </div>
+            <p>added by <em>{blog.author}</em></p>
+            <Button onClick={removeBlog}>remove</Button>
+        </div>
+    )
 }
 
 export default Blog
