@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {deleteBlog, incrementLike} from "../reducers/blogReducer";
+import {useRouteMatch} from "react-router-dom";
 
-const Blog = ({ blog }) => {
+const Blog = () => {
   const dispatch = useDispatch()
+
+  const {
+    params: { id: userIdMatch },
+  } = useRouteMatch('/blogs/:id')
+
+  const blog = useSelector((state) =>
+      state.blogs.find((b) => b.id === userIdMatch))
+  console.log("blog", blog)
 
   const [visible, setVisible] = useState(false)
   const label = visible ? 'hide' : 'view'

@@ -39,7 +39,7 @@ export const createBlog = content => {
                 data: newObj,
             })
             const notification = {
-                message: `you added new blog '${title}'`,
+                message: `you added new blog '${content.title}'`,
                 isError: false
             }
             dispatch(setNotification(notification, 5));

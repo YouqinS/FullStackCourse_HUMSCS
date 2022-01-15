@@ -4,7 +4,6 @@ const notificationReducer = (state = {notification: null, timer: null}, action) 
             if (state.timer !== null) {
                 clearTimeout(state.timer)
             }
-            console.log("notificationReducer: ", action.data.notification)
             return { notification: action.data.notification, timer: action.data.timer }
         case "CLEAR_NOTIFICATION":
             const notification = {

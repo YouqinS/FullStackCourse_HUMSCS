@@ -2,7 +2,6 @@ import {useState} from 'react'
 import React from 'react'
 import {useDispatch} from "react-redux";
 import {createBlog} from "../reducers/blogReducer";
-import {setNotification} from "../reducers/notificationReducer";
 
 const NewBlogForm = () => {
     const dispatch = useDispatch()
