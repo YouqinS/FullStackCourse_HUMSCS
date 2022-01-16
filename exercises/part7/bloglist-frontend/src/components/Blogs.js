@@ -36,7 +36,7 @@ const Blogs = () => {
                             {blog.author}
                         </td>
                         <td>
-                            {blog.url}
+                            <a href={blog.url}>{blog.url}</a>
                         </td>
                     </tr>
                 )}

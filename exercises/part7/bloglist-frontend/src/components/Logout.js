@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
 import {setUser} from "../reducers/currentUserReducer";
+import {Button} from "react-bootstrap";
 
 const Logout = ({user}) => {
     const dispatch = useDispatch()
@@ -14,8 +15,7 @@ const Logout = ({user}) => {
     return user ?
         (
             <div>
-                {user.username} logged in
-                <button onClick={handleLogout}>logout</button>
+                <Button onClick={handleLogout}>logout</Button>
             </div>
         )
         :
