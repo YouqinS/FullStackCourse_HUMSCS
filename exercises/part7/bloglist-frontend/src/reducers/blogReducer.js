@@ -106,4 +106,31 @@ export const deleteBlog = (blogToBeRemoved) => {
     }
 }
 
+export const addComment = (blog, comment) => {
+    return async dispatch => {
+        console.log('add comment to blog=', blog)
+        try {
+            const changedBlog = await blogService.comment({
+                ...blog,
+                comments: blog.comments.concat(comment)
+            })
+
+            dispatch({
+                type: 'UPDATE_BLOG',
+                data: changedBlog,
+            })
+
+        } catch (error) {
+            console.log('failed to add comment')
+            console.log(error)
+
+            const notification = {
+                message: `failed to add comment of blog ${blog.title}`,
+                isError: true
+            }
+            dispatch(setNotification(notification, 5));
+        }
+    }
+}
+
 export default reducer
