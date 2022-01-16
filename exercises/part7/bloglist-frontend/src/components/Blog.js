@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {deleteBlog, incrementLike} from "../reducers/blogReducer";
 import {Redirect, useHistory, useRouteMatch} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import {Button, ListGroup, ListGroupItem} from "react-bootstrap";
 
 const Blog = () => {
     const dispatch = useDispatch()
@@ -39,13 +39,29 @@ const Blog = () => {
 
     return (
         <div style={blogStyle} className='blog' id='blog-details'>
-            <h2>{blog.title}</h2>
+            <h2>{blog.title} <Button onClick={removeBlog} style={{float: 'right', marginRight: 20, background: "red"}}>remove</Button></h2>
             <a href={blog.url}>{blog.url}</a>
-            <div><strong> {blog.likes}</strong>
+            <div><strong> {blog.likes} likes </strong>
                 <Button onClick={updateLikes}>like</Button>
             </div>
             <p>added by <em>{blog.author}</em></p>
-            <Button onClick={removeBlog}>remove</Button>
+            <h3>comments:</h3>
+
+            {blog.comments ?
+                <div>
+                    <ul>
+                        {
+                            blog.comments.map(comment =>
+                                <li>
+                                    {comment}
+                                </li>)
+                        }
+                    </ul>
+
+                </div>
+                : <p>{""}</p>
+            }
+
         </div>
     )
 }
