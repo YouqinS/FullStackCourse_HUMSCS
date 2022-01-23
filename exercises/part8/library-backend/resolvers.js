@@ -17,64 +17,41 @@ const JWT_SECRET = config.JWT_SECRET
         allBooks: async (root, args) => {
             if (args.author && args.genre) {
                 const author = await Author.findOne({name: args.author});
-                return await Book.find({
+                return Book.find({
                     $and: [
                         {author: {$in: author.id}},
                         {genres: {$in: args.genre}},
                     ],
-                }).populate("author")
+                }).populate("author");
 
             } else if (args.author) {
                 const author = await Author.findOne({name: args.author});
 
-                return await Book.find({author: {$in: author.id}}).populate(
-                    "author"
-                )
+                return Book.find({author: {$in: author.id}}).populate("author");
 
             } else if (args.genre) {
-                return await Book.find({genres: {$in: args.genre}}).populate(
-                    "author"
-                )
+                return Book.find({genres: {$in: args.genre}}).populate("author");
 
             } else {
-                return await Book.find({}).populate("author");
+                return Book.find({}).populate("author");
             }
         },
 
-        /*        allAuthors: () => async () => {
-                    const authors = await Author.find({});
-                    const books = await Book.find(({}));
-
-                    return authors.map(async (author) => ({
-                            //bookCount: books.filter(b => b.author === author.name).length,
-                            bookCount: await Book.find({
-                                author: {$in: author._id},
-                            }).populate("author").length,
-                            name: author.name,
-                            born: author.born,
-                            id: author.id
-                        }
-                    ))
-                },*/
         allAuthors: async () => {
             const authors = await Author.find({});
-            let booksPerAuthor = authors.map(async (author) => {
-                const result = await Book.find({
+
+            return authors.map(async author => {
+                const booksByAuthor = await Book.find({
                     author: {$in: author._id},
                 }).populate("author");
 
-                const authorObject = {
+                return ({
+                    bookCount: booksByAuthor.length,
                     name: author.name,
                     born: author.born,
-                    bookCount: result.length,
-                    id: author._id
-                };
-                return authorObject;
-            });
-
-            booksPerAuthor = await Promise.all(booksPerAuthor);
-
-            return booksPerAuthor;
+                    id: author.id
+                })
+            })
         },
     },
     Book: {

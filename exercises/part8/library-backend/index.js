@@ -1,7 +1,4 @@
-const {
-    ApolloServer, gql, UserInputError,
-    AuthenticationError
-} = require('apollo-server')
+const {ApolloServer} = require('apollo-server')
 const mongoose = require('mongoose')
 
 const jwt = require("jsonwebtoken");
