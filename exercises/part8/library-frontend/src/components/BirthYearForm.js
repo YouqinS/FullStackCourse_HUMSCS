@@ -1,14 +1,15 @@
 import {gql, useMutation} from "@apollo/client";
 import React, {useEffect, useState} from "react";
+import Select from "react-select";
 
-import { EDIT_BORN, ALL_AUTHORS } from "../queries";
+import {EDIT_BORN, ALL_AUTHORS} from "../queries";
 
-const BirthYearForm = ({setError}) => {
+const BirthYearForm = ({setError, authorNames}) => {
     const [name, setName] = useState('')
     const [born, setBorn] = useState('')
 
     const [editBorn, result] = useMutation(EDIT_BORN, {
-        refetchQueries: [ { query: ALL_AUTHORS } ],
+        refetchQueries: [{query: ALL_AUTHORS}],
     })
 
     useEffect(() => {
@@ -26,19 +27,26 @@ const BirthYearForm = ({setError}) => {
         setBorn('')
     }
 
+    const options = authorNames.map(name => {
+        return {
+            value: name,
+            label: name
+        }
+    })
+
     return (
         <div>
             <h3>set birth year</h3>
             <form onSubmit={submit}>
-                <div>
-                    name <input value={name}
-                                onChange={({target}) => setName(target.value)}
+                <Select
+                    placeholder="Select author..."
+                    options={options}
+                    onChange={({label}) => setName(label)}
                 />
-                </div>
                 <div>
                     born <input type='number'
-                    value={born}
-                                 onChange={({target}) => setBorn(target.value)}
+                                value={born}
+                                onChange={({target}) => setBorn(target.value)}
                 />
                 </div>
 

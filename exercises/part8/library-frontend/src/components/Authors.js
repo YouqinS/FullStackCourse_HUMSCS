@@ -15,6 +15,8 @@ const Authors = (props) => {
 
     const authors = result.data.allAuthors
 
+    const authorNames = authors.map(a => a.name.toLowerCase())
+
     if (!props.show) {
         return null
     }
@@ -43,7 +45,7 @@ const Authors = (props) => {
                 </tbody>
             </table>
 
-            <BirthYearForm setError={props.setError}/>
+            <BirthYearForm setError={props.setError} authorNames={authorNames}/>
         </div>
     )
 }
