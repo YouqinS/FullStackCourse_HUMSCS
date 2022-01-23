@@ -92,7 +92,7 @@ const JWT_SECRET = config.JWT_SECRET
             const user = await User.findOne({ username: args.username });
 
             if (!user || args.password !== "mimi") {
-                throw new UserInputError("wrong credentials");
+                throw new UserInputError("wrong username or password");
             }
 
             const userForToken = {
@@ -104,58 +104,63 @@ const JWT_SECRET = config.JWT_SECRET
         },
 
         addBook: async (root, args, context) => {
-            let book;
+            let bookToAdd;
             try {
-                let author = await Author.findOne({ name: args.author });
+                let authorFound = await Author.findOne({ name: args.author });
 
                 const currentUser = context.currentUser;
 
                 if (!currentUser) {
-                    throw new AuthenticationError("not authenticated");
+                    throw new AuthenticationError("you need to login to add books");
                 }
 
-                if (author) {
-                    book = new Book({ ...args, author: author._id });
-                    await book.save();
+                if (authorFound) {
+                    bookToAdd = new Book({ ...args, author: authorFound._id });
+                    await bookToAdd.save();
                 }
 
-                if (!author) {
-                    author = new Author({
+                if (!authorFound) {
+                    authorFound = new Author({
                         name: args.author,
                         born: null,
                         bookCount: 1,
                         id: uuid(),
                     });
 
-                    book = new Book({ ...args, author: author.id });
-                    await author.save();
-                    await book.save();
+                    bookToAdd = new Book({ ...args, author: authorFound.id });
+                    await authorFound.save();
+                    await bookToAdd.save();
                 }
             } catch (error) {
                 throw new UserInputError(error.message, {
                     invalidArgs: args,
                 });
             }
-            return book;
+            return bookToAdd;
         },
 
         editAuthor: async (root, args, context) => {
-            const author = await Author.findOne({ name: args.name });
+            const authorFound = await Author.findOne({ name: args.name });
             const currentUser = context.currentUser;
 
             if (!currentUser) {
-                throw new AuthenticationError("not authenticated");
+                throw new AuthenticationError("you need to login to edit author data");
             }
-            author.born = args.setBornTo;
+
+            if (!authorFound) {
+                throw new UserInputError("no author found with provided name");
+            }
+
+            authorFound.born = args.setBornTo;
 
             try {
-                await author.save();
+                await authorFound.save();
             } catch (error) {
                 throw new UserInputError(error.message, {
                     invalidArgs: args,
                 });
             }
-            return author;
+            return authorFound;
         },
     },
 }
