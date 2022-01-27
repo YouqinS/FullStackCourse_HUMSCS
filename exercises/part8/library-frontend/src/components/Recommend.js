@@ -1,24 +1,42 @@
-import React from "react";
-import {useQuery} from "@apollo/client";
+import React, {useEffect, useState} from "react";
+import {useLazyQuery, useQuery} from "@apollo/client";
 import {ALL_BOOKS, ME} from "../queries";
 
-const Recommend = () => {
+const Recommend = ({show}) => {
+    const [favoriteGenre, setFavoriteGenre] = useState("");
+    const [favoriteBooks, setFavoriteBooks] = useState([]);
+    const [getFavoriteBooks, booksData] = useLazyQuery(ALL_BOOKS, {
+        variables: {genre: favoriteGenre},
+        pollInterval: 10000,
+    })
+
     const me = useQuery(ME)
-    console.log("me", me.data)
 
-    const all_books = useQuery(ALL_BOOKS)
+    useEffect(() => {
+        if (me.data && me.data.me) {
+            setFavoriteGenre(me.data.me.favoriteGenre)
+            getFavoriteBooks()
+        }
+    }, [me.data, getFavoriteBooks]);
 
-    if (all_books.loading || me.loading) {
+    useEffect(() => {
+        if (booksData.data && booksData.data.allBooks) {
+            setFavoriteBooks(booksData.data.allBooks)
+            console.log("booksData.data.allBooks", booksData.data.allBooks)
+            console.log("favoriteBooks", favoriteBooks)
+        }
+    }, [booksData.data, setFavoriteBooks]);
+
+
+
+    if (!show) {
+        return null
+    }
+
+    if (me.loading || booksData.loading) {
         return <div>loading...</div>
     }
 
-    const books = all_books.data.allBooks
-    console.log("books", all_books.data)
-
-    const favoriteGenre = me.data.me.favoriteGenre;
-    const myFavoriteBooks = books.filter(b => b.genres.includes(favoriteGenre))
-
-    console.log(myFavoriteBooks)
     return (
         <div>
             <h2>recommendations</h2>
@@ -31,7 +49,7 @@ const Recommend = () => {
                     <th>author</th>
                     <th>published</th>
                 </tr>
-                {myFavoriteBooks.map(a =>
+                {favoriteBooks.map(a =>
                     <tr key={a.title}>
                         <td>{a.title}</td>
                         <td>{a.author.name}</td>

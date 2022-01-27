@@ -32,7 +32,7 @@ const App = () => {
     if (showLogin && !token) {
         return (
             <div>
-                <Notify errorMessage={errorMessage} />
+                <Notify errorMessage={errorMessage}/>
                 <h2>Login</h2>
                 <LoginForm
                     setToken={setToken}

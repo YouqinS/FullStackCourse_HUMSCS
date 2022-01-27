@@ -20,7 +20,6 @@ const Books = (props) => {
         allGenres.push.apply(allGenres, book.genres)
         allGenres = allGenres.filter((v, i, a) => a.indexOf(v) === i);
     })
-    console.log("allGenres", allGenres)
 
     const showBooksByGenre = (genre) => {
         console.log("selected genre", genre)
