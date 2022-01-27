@@ -13,14 +13,13 @@ const NewBook = ({show, setError}) => {
     refetchQueries: [{ query: ALL_AUTHORS }, { query: ALL_BOOKS } ],
     onError: (error) => {
       setError(error.graphQLErrors[0].message)
-    }
+    },
   })
 
   const submit = async (event) => {
     event.preventDefault()
 
-    console.log(published, typeof(published))
-    createBook({variables: {title: title, author: author, published: parseInt(published), genres: genres}})
+    await createBook({variables: {title: title, author: author, published: parseInt(published), genres: genres}})
 
     console.log('add book...')
 

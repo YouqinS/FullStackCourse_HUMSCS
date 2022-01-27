@@ -53,6 +53,10 @@ const JWT_SECRET = config.JWT_SECRET
                 })
             })
         },
+
+        me: (root, args, context) => {
+            return context.currentUser
+        }
     },
     Book: {
         author: async (root) => {

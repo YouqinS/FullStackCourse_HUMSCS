@@ -1,8 +1,8 @@
-import {gql, useMutation} from "@apollo/client";
+import {useMutation} from "@apollo/client";
 import React, {useEffect, useState} from "react";
 import Select from "react-select";
 
-import {EDIT_BORN, ALL_AUTHORS} from "../queries";
+import {EDIT_BORN, ALL_AUTHORS, ALL_BOOKS} from "../queries";
 
 const BirthYearForm = ({setError, authorNames}) => {
     const [name, setName] = useState('')
@@ -14,14 +14,15 @@ const BirthYearForm = ({setError, authorNames}) => {
 
     useEffect(() => {
         if (result.data && !result.data.editAuthor) {
-            setError('name not found') //if asking use to input name
+            setError('name not found')
         }
     }, [result.data])  // eslint-disable-line
 
     const submit = (event) => {
         event.preventDefault()
 
-        editBorn({variables: {name, setBornTo: parseInt(born)}})
+        editBorn({variables: {name: name, setBornTo: parseInt(born)}})
+        console.log(name, parseInt(born))
 
         setName('')
         setBorn('')
