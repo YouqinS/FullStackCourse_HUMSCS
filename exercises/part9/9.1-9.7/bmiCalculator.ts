@@ -1,4 +1,4 @@
-const calculateBmi = (heightCm: number, weightKg: number): String => {
+export const calculateBmi = (heightCm: number, weightKg: number): String => {
     if (heightCm <= 0 || weightKg <= 0) {
         throw new Error('Height and weight must be bigger 0');
     }
