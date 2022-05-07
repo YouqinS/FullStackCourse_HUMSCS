@@ -48,7 +48,7 @@ const parseInputs = (args: Array<string>): inputs => {
 
     return {
         exerciseRecords: records.slice(0, -1),
-        target: records.at(-1)
+        target: Number(records.at(-1))
     }
 }
 
