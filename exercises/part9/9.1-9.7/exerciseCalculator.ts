@@ -8,10 +8,10 @@ interface Result {
     average: number
 }
 
-const calculateExercises = (exerciseRecords: number[], target: number): Result => {
+export const calculateExercises = (exerciseRecords: number[], target: number): Result => {
     const totalDays = exerciseRecords.length;
     const totalHours = exerciseRecords.reduce((accumulator, a) => accumulator + a, 0);
-    const avg = totalHours / totalDays;
+    const avg = totalDays == 0 ? 0 : totalHours / totalDays;
     const isSuccess = avg >= target;
 
     return {
@@ -25,7 +25,7 @@ const calculateExercises = (exerciseRecords: number[], target: number): Result =
     };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+//console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
 
 
 interface inputs {
