@@ -9,9 +9,9 @@ interface Result {
 }
 
 const calculateExercises = (exerciseRecords: number[], target: number): Result => {
-    const totalDays = exerciseRecords.length
+    const totalDays = exerciseRecords.length;
     const totalHours = exerciseRecords.reduce((accumulator, a) => accumulator + a, 0);
-    const avg = totalHours / totalDays
+    const avg = totalHours / totalDays;
     const isSuccess = avg >= target;
 
     return {
@@ -23,7 +23,7 @@ const calculateExercises = (exerciseRecords: number[], target: number): Result =
         target: target,
         average: avg
     };
-}
+};
 
 console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
 
@@ -36,27 +36,27 @@ interface inputs {
 const parseInputs = (args: Array<string>): inputs => {
     if (args.length < 4) throw new Error('Not enough arguments');
 
-    let records = [];
+    const records = [];
 
     for (let i = 2; i < args.length; i++) {
         if (isNaN(Number(args[i]))) {
-            throw new Error("Provided value '" + args[i] + "' is not a number!")
+            throw new Error("Provided value '" + args[i] + "' is not a number!");
         } else {
-            records.push(Number(args[i]))
+            records.push(Number(args[i]));
         }
     }
 
     return {
         exerciseRecords: records.slice(0, -1),
         target: Number(records.at(-1))
-    }
-}
+    };
+};
 
 try {
     const {exerciseRecords, target} = parseInputs(process.argv);
-    console.log(calculateExercises(exerciseRecords, target))
+    console.log(calculateExercises(exerciseRecords, target));
 } catch (error: unknown) {
-    let errorMessage = 'Error: '
+    let errorMessage = 'Error: ';
     if (error instanceof Error) {
         errorMessage += error.message;
     }

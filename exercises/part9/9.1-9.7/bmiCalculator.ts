@@ -1,4 +1,4 @@
-export const calculateBmi = (heightCm: number, weightKg: number): String => {
+export const calculateBmi = (heightCm: number, weightKg: number): string => {
     if (heightCm <= 0 || weightKg <= 0) {
         throw new Error('Height and weight must be bigger 0');
     }
@@ -22,7 +22,7 @@ export const calculateBmi = (heightCm: number, weightKg: number): String => {
         message = "Underweight (Severe thinness)";
     }
     return message;
-}
+};
 
 //console.log(calculateBmi(180, 74))
 
@@ -39,17 +39,17 @@ const parseArguments = (args: Array<string>): UserInputs => {
         return {
             heightCm: Number(args[2]),
             weightKg: Number(args[3])
-        }
+        };
     } else {
         throw new Error('Provided values were not numbers!');
     }
-}
+};
 
 try {
     const {heightCm, weightKg} = parseArguments(process.argv);
-    console.log(calculateBmi(heightCm, weightKg))
+    console.log(calculateBmi(heightCm, weightKg));
 } catch (error: unknown) {
-    let errorMessage = 'Error: '
+    let errorMessage = 'Error: ';
     if (error instanceof Error) {
         errorMessage += error.message;
     }

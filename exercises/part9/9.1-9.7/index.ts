@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/hello', (_req, res) => {
-    res.send('Hello Full Stack!')
+    res.send('Hello Full Stack!');
 });
 
 
@@ -14,11 +14,11 @@ app.get('/bmi', (req, res) => {
     const height = Number(req.query.height);
     const weight = Number(req.query.weight);
 
-    let response = {}
+    let response = {};
     if (isNaN(height) || isNaN(weight)) {
         response = {
             error: "malformatted parameters"
-        }
+        };
     } else {
         const bmi = calculateBmi(height, weight);
         response = {
@@ -28,9 +28,9 @@ app.get('/bmi', (req, res) => {
         };
     }
 
-    res.send(response)
+    res.send(response);
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
-})
+    console.log(`Server listening on port ${PORT}`);
+});
