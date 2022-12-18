@@ -1,0 +1,3 @@
+We no longer support global installation of Create React App
+https://stackoverflow.com/questions/64963796/create-react-app-is-not-working-since-version-4-0-1
+npm uninstall -g create-react-app && npm i -g npm@latest && npm cache clean -f && npx create-react-app@latest my-app --use-npm

@@ -1,0 +1,2 @@
+npx create-react-app course-information --template typescript
+npm start

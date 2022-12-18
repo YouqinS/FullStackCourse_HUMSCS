@@ -1,0 +1,7 @@
+fullstack :rzFjnv5XaTbpAQjp
+xiaoouvivian:XIAOOUvivianIT
+mongodb+srv://<username>:<password>@cluster0.6s6l8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+mongodb+srv://fullstack:rzFjnv5XaTbpAQjp@cluster0.6s6l8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+mongodb+srv://fullstack:rzFjnv5XaTbpAQjp@cluster0.6s6l8.mongodb.net/note-app?retryWrites=true&w=majority
