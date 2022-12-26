@@ -82,6 +82,6 @@ const diagnoseData: Array<Diagnose> = [
         "code": "J12.82",
         "name": "Pneumonia due to coronavirus disease"
     }
-]
+];
 
 export default diagnoseData;

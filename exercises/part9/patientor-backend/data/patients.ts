@@ -43,12 +43,12 @@ const data =
             "gender": "male",
             "occupation": "Digital evangelist"
         }
-    ]
+    ];
 
 const patientData: Array<Patient> = data.map(obj => {
-    const object = toNewPatientEntry(obj) as Patient
+    const object = toNewPatientEntry(obj) as Patient;
     object.id = obj.id;
     return object;
-})
+});
 
 export default patientData;

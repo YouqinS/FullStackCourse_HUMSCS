@@ -16,13 +16,14 @@ router.get('/:id', (_req, res) => {
     if (diary) {
         res.send(diary);
     } else {
-        res.send('no diary with provided id was found').status(404)
+        res.send('no diary with provided id was found').status(404);
     }
 });
 
 router.post('/', (req, res) => {
 
     try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         const newDiaryEntry = toNewDiaryEntry(req.body);
         const newDiary = diaryService.addDiary(newDiaryEntry);
         res.json(newDiary);

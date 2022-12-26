@@ -3,7 +3,7 @@ import diaryRouter from './routes/diaryRoute';
 
 
 const app = express();
-app.use(express.json());
+app.use(express.json());//In order to parse the incoming data we must have the json middleware configured
 app.use('/api/diaries', diaryRouter);
 
 const PORT = 3000;

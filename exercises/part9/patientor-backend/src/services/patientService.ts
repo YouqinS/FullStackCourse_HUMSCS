@@ -20,13 +20,13 @@ const addPatient = (entry: NewPatientEntry): Patient => {
   const newPatient = {
         id:  uuid(),
         ...entry
-    }
+    };
     patients.push(newPatient);
     return newPatient;
-}
+};
 
 export default {
     getPatientData,
     getPatientDataNoSsn,
     addPatient
-}
+};

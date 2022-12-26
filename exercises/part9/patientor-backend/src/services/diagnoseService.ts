@@ -7,4 +7,4 @@ const getDiagnoseData = (): Array<Diagnose> => {
 
 export default {
     getDiagnoseData
-}
+};

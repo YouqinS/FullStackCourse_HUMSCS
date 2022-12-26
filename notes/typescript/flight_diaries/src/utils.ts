@@ -9,7 +9,7 @@ const toNewDiaryEntry = ({ comment, date, weather, visibility } : Fields): NewDi
       weather: parseWeather(weather),
       visibility: parseVisibility(visibility)
   };
-}
+};
 
 const parseComment = (comment: unknown): string => {
     if (!comment || !isString(comment)) {
@@ -41,7 +41,9 @@ const parseWeather = (weather: unknown): Weather => {
     return weather;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isWeather = (weather: any): weather is Weather => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return Object.values(Weather).includes(weather);
 };
 
