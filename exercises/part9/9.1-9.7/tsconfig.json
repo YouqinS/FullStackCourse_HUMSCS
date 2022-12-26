@@ -11,5 +11,6 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "declaration": true,
-  }
+  },
+  "include": [ "next-env.d.ts", "*/.ts", "*/.tsx", "postcss.config.js", ".eslintrc.js", "*.ts" ]
 }

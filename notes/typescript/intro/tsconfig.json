@@ -9,5 +9,6 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "moduleResolution": "node"
-  }
+  },
+  "include": [ "next-env.d.ts", "*/.ts", "*/.tsx", "postcss.config.js", ".eslintrc.js", "*.ts" ]
 }

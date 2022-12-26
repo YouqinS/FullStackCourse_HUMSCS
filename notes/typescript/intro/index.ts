@@ -13,13 +13,13 @@ app.get('/ping', (_req, res) => {
 app.post('/calculate', (req, res) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { value1, value2, op } = req.body;
-    if (!value1 || isNaN(Number(value1))) {
+    if (!value1 || !value2 || isNaN(Number(value1)) || isNaN(Number(value2))) {
        return  res.send({
             error: 'error, value missing or not a number'
-        }).status(400)
+        }).status(400);
     }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const result = calculator(value1, value2, op);
+    const result = calculator(Number(value1), Number(value2), op);
     return res.send(result);
 });
 

@@ -12,6 +12,12 @@ app.get('/hello', (_req, res) => {
 });
 
 
+//http://localhost:3000/bmi?height=180&weight=74
+//{
+// "weight": 74,
+// "height": 180,
+// "bmi": "Normal (healthy weight)"
+// }
 app.get('/bmi', (req, res) => {
     const height = Number(req.query.height);
     const weight = Number(req.query.weight);
@@ -33,6 +39,23 @@ app.get('/bmi', (req, res) => {
     res.send(response);
 });
 
+//test in postman:
+//request url: http://localhost:3000/exercises
+//body:
+// {
+//    "daily_exercises": [3, 0, 2, 4.5, 0, 3, 1],
+//    "target": 2
+// }
+//response:
+// {
+//     "periodLength": 7,
+//     "trainingDays": 5,
+//     "success": false,
+//     "rating": 1.9285714285714286,
+//     "ratingDescription": "good, but can be better",
+//     "target": 2,
+//     "average": 1.9285714285714286
+// }
 app.post('/exercises', (req, res) => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const {daily_exercises, target} = req.body;
@@ -46,7 +69,7 @@ app.post('/exercises', (req, res) => {
             error: "malformatted parameters"
         }).status(400);
     } else {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         return res.send(calculateExercises(daily_exercises, target));
     }
 });
