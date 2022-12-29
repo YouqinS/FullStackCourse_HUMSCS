@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 import patients from "../../data/patients";
 import {NewPatientEntry, Patient, PatientNoSsn} from "../types";
 
@@ -15,6 +15,9 @@ const getPatientDataNoSsn = (): Array<PatientNoSsn> => {
         occupation
     }));
 };
+const findById = (id: string): Patient | undefined => {
+    return patients.find((patient) => patient.id === id);
+};
 
 const addPatient = (entry: NewPatientEntry): Patient => {
   const newPatient = {
@@ -28,5 +31,6 @@ const addPatient = (entry: NewPatientEntry): Patient => {
 export default {
     getPatientData,
     getPatientDataNoSsn,
-    addPatient
+    addPatient,
+    findById
 };
