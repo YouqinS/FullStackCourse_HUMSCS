@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    image: backend-lns
+    build:
+      context: ./backend-go
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: backend
+
+  frontend:
+    image: frontend-lns
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+    environment:
+      -  BACKEND_URL=/api/
+    container_name: frontend
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "3000:80"
+    container_name: reverse-proxy-lns
+    depends_on:
+      - frontend
+      - backend

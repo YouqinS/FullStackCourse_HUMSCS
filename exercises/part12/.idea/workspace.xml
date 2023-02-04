@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="557d7eed-2a94-4b22-9760-2ce2b5862155" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/api/rest_api.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/dev.Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/Eurojackpot.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/FinnishLottery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/LotteryInterface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/LotteryNumberGenerator.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/LotteryType.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/generator/VikingLottery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/history/LotteryNumber.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/history/PastWinningNumber.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/docker-compose.dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/frontend-react/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/frontend-react/dev.Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/frontend-react/src/Form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LotteryNumberGenerator/frontend-react/src/util/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice_docker_image/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/exercises.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/exercises.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part11/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../part11/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part11/LotteryNumberService" beforeDir="false" afterPath="$PROJECT_DIR$/../part11/LotteryNumberService" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-backend/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-backend/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-frontend/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-frontend/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/part12-containers-applications/todo-app/todo-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part5/bloglist-frontend/cypress/integration/blog.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part5/bloglist-frontend/cypress/integration/blog.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/blogs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/controllers/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/models/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/models/blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/tests/blog-api.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/tests/blog-api.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/tests/list_helper.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/tests/list_helper.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/tests/test_helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/tests/test_helper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/tests/user-api.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/tests/user-api.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/utils/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/utils/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/utils/list_helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/utils/list_helper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/utils/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/utils/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-backend/utils/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-backend/utils/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part7/bloglist-frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../part7/bloglist-frontend/src/App.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LFLKCWYcfMUrK0no01yBi3wWvf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/youqin/Downloads/CSM_HU/FullStackCourse_HUMSCS/exercises/part12/LotteryNumberGenerator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LotteryNumberGenerator" />
+      <recent name="$PROJECT_DIR$/LotteryNumberGenerator/frontend-react" />
+      <recent name="$PROJECT_DIR$/LotteryNumberService/lottery-number-service/src" />
+      <recent name="$PROJECT_DIR$/part12-containers-applications/todo-app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LotteryNumberGenerator/backend-go" />
+      <recent name="$PROJECT_DIR$/LotteryNumberGenerator/backend-go/src" />
+      <recent name="$PROJECT_DIR$/LotteryNumberGenerator" />
+      <recent name="$PROJECT_DIR$/backend-go" />
+      <recent name="$PROJECT_DIR$/frontend-react" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="557d7eed-2a94-4b22-9760-2ce2b5862155" name="Changes" comment="" />
+      <created>1675461817831</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675461817831</updated>
+      <workItem from="1675461818918" duration="32014000" />
+      <workItem from="1675536881426" duration="41000" />
+      <workItem from="1675536930732" duration="9178000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
