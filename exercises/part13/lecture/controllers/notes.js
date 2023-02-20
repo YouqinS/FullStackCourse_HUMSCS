@@ -1,6 +1,7 @@
 //route handling associated with notes
 
 const router = require('express').Router()
+const { Op } = require('sequelize')
 
 const {Note, User} = require('../models')
 const {noteFinder, tokenExtractor} = require("../util/middleware");
@@ -28,13 +29,27 @@ router.post('/', tokenExtractor, async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    //const notes = await Note.findAll()
+    const where = {}
+
+    //http://localhost:3001/api/notes?important=true
+    if (req.query.important) {
+        where.important = req.query.important === "true"
+    }
+
+    //http://localhost:3001/api/notes?search=xx
+    if (req.query.search) {
+        where.content = {
+            [Op.substring]: req.query.search
+        }
+    }
+
     const notes = await Note.findAll({
         attributes: { exclude: ['userId'] },
         include: {
             model: User,
             attributes: ['name']
-        }
+        },
+        where,
     })
     res.json(notes)
 })
