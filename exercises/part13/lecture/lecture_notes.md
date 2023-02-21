@@ -110,6 +110,14 @@ postgres=# select * from notes;
   1 | Relational databases rule the world | t         | 
   2 | MongoDB is webscale                 | f         | 
 (2 rows) 
+
+postgres=# select * from users;
+ id |        username         |    name    | admin | disabled 
+----+-------------------------+------------+-------+----------
+  2 | myusername2@myemail.com | my name2   | f     | f
+  3 | user3                   | user3 name | f     | t
+  1 | myusername@myemail.com  | my name    | t     | f
+(3 rows)
 ````
 
 ### destroy the database from the console
@@ -119,13 +127,10 @@ DROP TABLE
 postgres=# \d
 Did not find any relations.
 ````
-
-{
-"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lIiwiaWQiOjEsImlhdCI6MTY3NjkwNDAwM30.zQSgRTLvfOl8Q3FVN8MbbCS7w951cBtvYDPWp5tryno",
-"username": "me",
-"name": "my name"
-}
+### update by id
 ````
+postgres=# update users set disabled=true where id=3;
+UPDATE 1
 ````
 
 ````
